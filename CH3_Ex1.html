@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS from JQuery</title>
+<style type="text/css">
+	.large {
+		font-size: 50px;
+	}
+</style>
+<script src="C:\jquery-3.5.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#switcher-large').bind('click',function(){
+			$('p').addClass('large');
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="switcher" class="switcher">
+		<h3>Style Switcher</h3>
+		<button id="switcher-default">
+			Default
+		</button>
+		<button id="switcher-narrow">
+			Narrow
+		</button>
+		<button id="switcher-large">
+			Large
+		</button>
+	</div>
+	<p>Hello World!!</p>
+</body>
+</html>

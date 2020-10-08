@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stopping Propagation</title>
+<style type="text/css">
+	.large {
+		font-size: 50px;
+	}
+	.default{
+		font-size: 30px;
+	}
+	.selected{
+		font-weight: bold;
+	}
+	.hidden{
+		display: none;
+	}
+</style>
+<script src="C:\jquery-3.5.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#switcher').click(function(event){
+			 $('#switcher button').toggleClass('hidden');
+		});
+	});
+	$(document).ready(function(){
+		$('#switcher-default').addClass('selected');
+		$('#switcher button').click(function(event){
+			var bodyClass=this.id.split('-')[1];
+			$('body').removeClass().addClass(bodyClass);
+			$('#switcher button').removeClass('selected');
+			$(this).addClass('selected');
+			//「hidden」親要素への伝播をキャンセルする。
+			event.stopPropagation();
+		})
+	});
+</script>
+</head>
+<body>
+	<div id="switcher" class="switcher">
+		<h3>Style Switcher</h3>
+		<button id="switcher-default">
+			Default
+		</button>
+		<button id="switcher-narrow">
+			Narrow
+		</button>
+		<button id="switcher-large">
+			Large
+		</button>
+	</div>	
+</body>
+</html>
