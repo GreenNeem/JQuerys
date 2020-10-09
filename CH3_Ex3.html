@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Delegation</title>
+<style type="text/css">
+	.large {
+		font-size: 50px;
+	}
+	.default{
+		font-size: 30px;
+	}
+	.selected{
+		font-weight: bold;
+	}
+	.hidden{
+		display: none;
+	}
+</style>
+<script src="C:\jquery-3.5.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#switcher').click(function(event){
+			　alert("Hi!");
+			 $('#switcher button').toggleClass('hidden');
+		});
+	});
+	$(document).ready(function(){
+		$('#switcher').click(function(event){
+				//is関数：セレクター書式が指定できる。	
+				//クリックイベントのハンドラとセレクター	書式での関数が別々として実行される。
+				//同じエベントであれば、Overrideみたいに停止可能。		
+			if( $(event.target).is('button')){
+				alert(event.target.id);
+				var bodyClass=event.target.id.split('-')[1];
+				$('body').removeClass().addClass(bodyClass);
+				$('#switcher button').removeClass('selected');
+				$(event.target).addClass('selected');			
+				event.stopPropagation();
+			}
+			
+		});
+	});
+
+	// //--------------------------------
+	// //switcher範囲でセレクタを使用する方法
+	// //switcher範囲で種別を分けてチェック。
+	// //--------------------------------
+	// $(document).ready(function(){
+	// 	$('#switcher').click(function(event){
+	// 			//is関数はセレクタ要素であるため。				
+	// 		if( $(event.target).is('button')){
+	// 			var bodyClass=event.target.id.split('-')[1];
+	// 			$('body').removeClass().addClass(bodyClass);
+	// 			$('#switcher button').removeClass('selected');
+	// 			$(event.target).addClass('selected');			
+	// 			//event.stopPropagation();
+	// 		}
+	// 		else{
+	// 			//switcher範囲でボタンのみが隠される。
+	// 			$('#switcher button').toggleClass('hidden');
+	// 		}
+	// 	});
+	// });
+</script>
+</head>
+<body>
+	<div id="switcher" class="switcher">
+		<h3>Style Switcher</h3>
+		<button id="switcher-default">
+			Default
+		</button>
+		<button id="switcher-narrow">
+			Narrow
+		</button>
+		<button id="switcher-large">
+			Large
+		</button>
+	</div>
+	<p>Hello World!!</p>
+</body>
+</html>
