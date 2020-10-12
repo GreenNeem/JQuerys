@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simulation User Interaction</title>
+<style type="text/css">
+	.large {
+		font-size: 50px;
+	}
+	.default{
+		font-size: 30px;
+	}
+	.selected{
+		font-weight: bold;
+	}
+	.hidden{
+		display: none;
+	}
+</style>
+<script src="D:\jquery-3.5.1.js"></script>
+<script>
+	$(document).ready(function(){
+		//switcher範囲にエベント追加　
+		var toggleSwitcher=function(event){
+			if(!$(event.target).is('button')){
+				$('#switcher button').toggleClass('hidden');
+			}
+		};
+		//手動
+		$('#switcher').bind('click',toggleSwitcher);
+		//自動
+        $('#switcher').click();	
+	});
+</script>
+</head>
+<body>
+	<div id="switcher" class="switcher">
+		<h3>Style Switcher</h3>
+		<button id="switcher-default">
+			Default
+		</button>
+		<button id="switcher-narrow">
+			Narrow
+		</button>
+		<button id="switcher-large">
+			Large
+		</button>
+	</div>	
+</body>
+</html>

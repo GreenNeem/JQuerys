@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mehhods for Elements Delegation</title>
+<style type="text/css">
+	.large {
+		font-size: 50px;
+	}
+	.default{
+		font-size: 30px;
+	}
+	.selected{
+		font-weight: bold;
+	}
+	.hidden{
+		display: none;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js">
+</script>
+<script>
+	$(document).ready(function(){
+		//パラメータ書式変更必要、エベント名を指定することが必要。
+		//複数の要素に同じエベントを渡す。
+		//前のJQueryバージョンのみがサポートされるため、参照パックのバージョン確認が必要。
+		$('#switcher button').live("click", function(){
+			var bodyClass=this.id.split('-')[1];
+			$('body').removeClass().addClass(bodyClass);
+			$('#switcher button').removeClass('selected');
+			$(this).addClass('selected');
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="switcher" class="switcher">
+		<h3>Style Switcher</h3>
+		<button id="switcher-default">
+			Default
+		</button>
+		<button id="switcher-narrow">
+			Narrow
+		</button>
+		<button id="switcher-large">
+			Large
+		</button>
+	</div>	
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mehhods for Elements Delegation</title>
+<style type="text/css">
+	.large {
+		font-size: 50px;
+	}
+	.default{
+		font-size: 30px;
+	}
+	.selected{
+		font-weight: bold;
+	}
+	.hidden{
+		display: none;
+	}
+</style>
+<script src="D:\jquery-3.5.1.js"></script>
+<script>
+	$(document).ready(function(){
+		//switcher範囲にエベント追加　
+		var toggleSwitcher=function(event){
+			if(!$(event.target).is('button')){
+				$('#switcher button').toggleClass('hidden');
+			}
+		};
+		$('#switcher').bind('click',toggleSwitcher);		
+		//ボタンを押下した後は、switcher範囲のクリック処理を解除する。
+		 $('#switcher button').click(function(){
+			$('#switcher').unbind('click',toggleSwitcher);
+			//デフォルトボタンを押すと元の戻す。
+			if(this.id=='switcher-default'){
+				$('#switcher').bind('click',toggleSwitcher);
+			}
+		});
+		
+
+	});
+</script>
+</head>
+<body>
+	<div id="switcher" class="switcher">
+		<h3>Style Switcher</h3>
+		<button id="switcher-default">
+			Default
+		</button>
+		<button id="switcher-narrow">
+			Narrow
+		</button>
+		<button id="switcher-large">
+			Large
+		</button>
+	</div>	
+</body>
+</html>
