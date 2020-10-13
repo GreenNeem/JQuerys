@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Animating multiple properties at once</title>
+<script src="D:\jquery-3.5.1.js"></script>
+<script>
+	$(document).ready(function(){
+		var $firstPara=$('p').eq(1);		
+		$firstPara.hide();
+		$('a.more').click(function(){			
+			$firstPara.animate({
+				opacity:'toggle',	//fading
+				height:'toggle'		//sliding	
+			},'slow');
+
+			var $link=$(this);
+			if ($link.text()=="read more") $link.text('read less');				
+			else $link.text('read more');			
+			return false;
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="speech">
+		<p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA<br>
+			AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA<br>
+			AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA<br>
+		</p>
+		<P>BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>
+			BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>
+			BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>
+			BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>
+			BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>
+			BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>		
+		</P>
+		<a href="#" class="more">Read More</a>
+	</div>
+</body>
+</html>
