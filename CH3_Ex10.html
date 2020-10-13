@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Animating multiple properties at once</title>
+<script src="D:\jquery-3.5.1.js"></script>
+<script>
+	$(document).ready(function(){
+		var $speech=$('div.speech');
+		var defaultSize=$speech.css('fontSize');
+		$('#switcher button').click(function(){
+			var num=parseFloat($speech.css('fontSize'));
+			alert(num);
+			switch(this.id){
+				case'switcher-large':
+					num *= 1.4;
+					break;
+				case'switcher-small':
+					num/=1.4;
+					break;
+				default:
+				num=parseFloat(defaultSize);
+			}
+			$speech.animate({fontSize:num +'px'},'slow');
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="switcher" class="switcher">
+		<h3>Style Switcher</h3>
+		<button id="switcher-default">
+			Default
+		</button>
+		<button id="switcher-narrow">
+			Narrow
+		</button>
+		<button id="switcher-large">
+			Large
+		</button>
+	</div>	
+	<div class="speech">
+		<p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA<br>
+			AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA<br>
+			AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA<br>
+		</p>
+		<P>BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>
+			BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>
+			BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>
+			BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>
+			BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>
+			BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB<br>		
+		</P>
+		<a href="#" class="more">Read More</a>
+	</div>
+</body>
+</html>
